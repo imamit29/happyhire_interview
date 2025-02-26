@@ -24,17 +24,33 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
     return Scaffold(
-      appBar: AppBar(
+      appBar: PreferredSize(
+          preferredSize: Size.fromHeight(65.0), // Set the height
+          child: AppBar(
         backgroundColor: Colors.white,
         elevation: 5,
-        leading: IconButton(
+        leading: Padding(padding: EdgeInsets.only(top: 20), child:  IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
-        ),
-        title: Text("베스트 리뷰어"),
+        ),),
+        title: Padding(padding: EdgeInsets.only(top: 20), child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              "랭킹 1위",
+              style: TextStyle(fontSize: 14,color: Colors.grey,  ),
+            ),
+            Text(
+              "베스트 리뷰어",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),),
+        //Text("베스트 리뷰어"),
         centerTitle: true,
+      )
       ),
       body: SingleChildScrollView(
         child: Column(
